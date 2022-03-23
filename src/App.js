@@ -21,10 +21,10 @@ function App() {
   }, [pictures]);
   useEffect(() => {
     if (pictures) {
-      const sevenDaysBefore = moment().subtract(+dateOfFilter, "days");
+      const startDateOfFilter = moment().subtract(+dateOfFilter, "days");
       const today = moment();
       const fil = rowData.filter((pic) => {
-        if (moment(pic.date).isBetween(sevenDaysBefore, today, "day", "[]"))
+        if (moment(pic.date).isBetween(startDateOfFilter, today, "day", "[]"))
           return pic;
       });
       if (dateOfFilter === "") updatePictures(spliter(rowData, 3));
